@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f256371744b4e4db24f4c5a458e86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveAcce: 0.01
+  playerMoveAcce: 4
   playerMoveSpeedMax: 3
 --- !u!1001 &2096314240222290270
 PrefabInstance:
