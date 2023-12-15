@@ -534,6 +534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6010944505148622884, guid: 616da6071210de84199a9bf7dddf6a94, type: 3}
+      propertyPath: circleSizeupSpeed
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 674498172667133977, guid: 616da6071210de84199a9bf7dddf6a94, type: 3}
       propertyPath: m_RootOrder
       value: 4
