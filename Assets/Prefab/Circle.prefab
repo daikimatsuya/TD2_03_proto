@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcadc3834a083b4468857e16aa3fbc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleSizeupSpeed: 0.01
+  circleSizeupSpeed: 0.001
   standardCircle: {x: 2, y: 2}
 --- !u!54 &5713378380853364529
 Rigidbody:
