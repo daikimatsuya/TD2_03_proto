@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("leftStickX") != 0 || Input.GetAxis("leftStickY") != 0)
         {
-            //rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
             rb.velocity = new Vector3(rb.velocity.x + playerMoveAcce * Input.GetAxis("leftStickX"), 0, rb.velocity.z - playerMoveAcce * Input.GetAxis("leftStickY"));
         }
       
