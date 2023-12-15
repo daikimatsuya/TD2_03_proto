@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
+    
 
     public float playerMoveAcce;
     public float playerMoveSpeedMax;
