@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     Rigidbody rb;
     private Transform cameraPos;
-    public GameObject camera;
+    public new GameObject camera;
 
     public float playerMoveAcce;
     public float playerMoveSpeedMax;
