@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float playerMoveSpeedMax;
     private bool isCanAttack;
     private float cameraRotate;
-
+    private float shotPower;
 
     private void PlayerControll()
     {
@@ -112,11 +112,17 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("leftTrigger") != 0)
         {
-            CreateWave();
+            isCanAttack = true;
+            shotPower+=1;
         }
         if(Input.GetAxis("leftTrigger")==0)
         {
-            isCanAttack = true;
+            if (shotPower < 30)
+            {
+                isCanAttack=false;
+                shotPower = 0;
+            }
+            CreateWave();
         }
     }
     private void CreateWave()
@@ -124,6 +130,7 @@ public class Player : MonoBehaviour
         if (isCanAttack)
         {
             isCanAttack=false;
+            shotPower = 0;
             UnityEngine.Object instans = Instantiate(wave, new Vector3(tf.position.x, tf.position.y, tf.position.z), new Quaternion(0, 0, 0, 0));
         }
     }
@@ -134,6 +141,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
+
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         cameraPos=GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
