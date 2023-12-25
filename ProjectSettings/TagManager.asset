@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wall
   - Wave
+  - Enemy
+  - Circle
+  - Manager
   layers:
   - Default
   - TransparentFX

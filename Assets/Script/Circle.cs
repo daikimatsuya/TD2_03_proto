@@ -33,6 +33,10 @@ public class Circle : MonoBehaviour
     {
         transform.localScale = new Vector3(scale.x, 1, scale.y);
     }
+    public void CircleSizeUp(Vector2 size)
+    {
+        circleSize = new Vector2(circleSize.x + size.x, circleSize.y + size.y);
+    }
     // Start is called before the first frame update
     void Start()
     {
