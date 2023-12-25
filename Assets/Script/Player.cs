@@ -130,13 +130,22 @@ public class Player : MonoBehaviour
         if (isCanAttack)
         {
             isCanAttack=false;
-            shotPower = 0;
+           
             UnityEngine.Object instans = Instantiate(wave, new Vector3(tf.position.x, tf.position.y, tf.position.z), new Quaternion(0, 0, 0, 0));
+           // shotPower = 0;
         }
     }
     private float ToDegree(float rad)
     {
         return rad * (float)(180f/Math.PI);
+    }
+    public float GetShotpower()
+    {
+        return shotPower;
+    }
+    public void ResetShotPower()
+    {
+        shotPower = 0;
     }
     // Start is called before the first frame update
     void Start()

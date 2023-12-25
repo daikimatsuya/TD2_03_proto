@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d60e62c5e2d59d46b2615fa4b3230ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vector: 3
+  vector: 6
 --- !u!54 &229164903375738205
 Rigidbody:
   m_ObjectHideFlags: 0
