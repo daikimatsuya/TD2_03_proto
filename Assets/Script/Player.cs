@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,12 +15,13 @@ public class Player : MonoBehaviour
     public float playerMoveAcce;
     public float playerMoveSpeedMax;
     private bool isCanAttack;
-    private float cameraRotate;
+    public float cameraRotate;
     private float shotPower;
 
     private void PlayerControll()
     {
         PlayerMove();
+        FollowCamera();
     }
     
     private void PlayerMove()
@@ -147,6 +149,11 @@ public class Player : MonoBehaviour
     {
         shotPower = 0;
     }
+    private void FollowCamera()
+    {
+        tf.localRotation = cameraPos.localRotation;
+        tf.localEulerAngles = new Vector3(0, tf.localEulerAngles.y-90, 0);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -155,7 +162,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         cameraPos=GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
-        //camera = GetComponent<GameObject>();
+      
         
     }
 
@@ -163,7 +170,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerControll();
-        cameraRotate = cameraPos.localRotation.y;
+      
+        cameraRotate = cameraPos.localEulerAngles.y;
      
     }
 }
