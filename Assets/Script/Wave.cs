@@ -18,7 +18,7 @@ public class Wave : MonoBehaviour
     private void Move()
     {
       
-        rb.velocity = new Vector3(rb.velocity.x + vector * (float)Math.Cos(ToRadian(transform.localEulerAngles.y)), 0, rb.velocity.z + vector * (float)Math.Sin(ToRadian(transform.localEulerAngles.y)));
+        rb.velocity = new Vector3(rb.velocity.x + vector * (float)Math.Cos(ToRadian(-transform.localEulerAngles.y)), 0, rb.velocity.z + vector * (float)Math.Sin(ToRadian(-transform.localEulerAngles.y)));
     }
     private float ToRadian(float angle)
     {
