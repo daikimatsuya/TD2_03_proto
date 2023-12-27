@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private bool isCanAttack;
     public float cameraRotate;
     private float shotPower;
+    private int powerLevel;
 
     private void PlayerControll()
     {
@@ -123,6 +124,18 @@ public class Player : MonoBehaviour
             {
                 isCanAttack=false;
                 shotPower = 0;
+                powerLevel = 0;
+            }
+            if(shotPower <40) {
+                powerLevel = 1;
+            }
+            if (shotPower < 50)
+            {
+                powerLevel = 2;
+            }
+            if (shotPower < 60)
+            {
+                powerLevel = 3;
             }
             CreateWave();
         }
@@ -144,6 +157,10 @@ public class Player : MonoBehaviour
     public float GetShotpower()
     {
         return shotPower;
+    }
+    public int GetPowerLevel()
+    {
+        return powerLevel;
     }
     public void ResetShotPower()
     {

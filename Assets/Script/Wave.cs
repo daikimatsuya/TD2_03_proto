@@ -13,6 +13,7 @@ public class Wave : MonoBehaviour
 
     private float shotPower;
     public float vector;
+    private int level;
 
     private void WaveAction()
     {
@@ -28,6 +29,7 @@ public class Wave : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    
     private void Move()
     {
       
@@ -46,7 +48,8 @@ public class Wave : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
         transform.rotation = playerPos.rotation;
-        shotPower=player.GetShotpower();
+        shotPower=player.GetShotpower();    
+        level = player.GetPowerLevel();
         player.ResetShotPower();
     }
 
