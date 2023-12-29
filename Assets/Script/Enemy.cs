@@ -14,6 +14,14 @@ public class Enemy : MonoBehaviour
         {
             rb.velocity= new Vector3( other.GetComponent<Rigidbody>().velocity.x/2, 0, other.GetComponent<Rigidbody>().velocity.z/2);
         }
+        if(other.tag == "Wave2")
+        {
+            rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 1.75f, 0, other.GetComponent<Rigidbody>().velocity.z / 1.75f);
+        }
+        if (other.tag == "Wave3")
+        {
+            rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 1.5f, 0, other.GetComponent<Rigidbody>().velocity.z / 1.5f);
+        }
      
     }
     public void OnCollisionEnter(Collision collision)

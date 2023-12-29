@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float cameraRotate;
     private float shotPower;
     private int powerLevel;
+    private int mode;
 
     private void PlayerControll()
     {
@@ -138,6 +139,7 @@ public class Player : MonoBehaviour
                 powerLevel = 3;
             }
             CreateWave();
+            SelectMode();
         }
     }
     private void CreateWave()
@@ -149,6 +151,18 @@ public class Player : MonoBehaviour
             UnityEngine.Object instans = Instantiate(wave, new Vector3(tf.position.x, tf.position.y, tf.position.z), new Quaternion(0, 0, 0, 0));
            // shotPower = 0;
         }
+    }
+    private void SelectMode()
+    {
+        if (Input.GetAxis("leftB")!=0)
+        {
+            mode++;
+        }
+        if (Input.GetAxis("rightB") != 0)
+        {
+            mode--;
+        }
+
     }
     private float ToDegree(float rad)
     {
@@ -179,7 +193,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         cameraPos=GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
-      
+
+        mode = 2;
         
     }
 

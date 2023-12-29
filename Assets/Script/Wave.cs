@@ -29,7 +29,22 @@ public class Wave : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    
+    private void LevelCheck()
+    {
+        if( level == 1 )
+        {
+            this.tag = "Wave";
+        }
+        if( level == 2 )
+        {
+            this.tag = "Wave2";
+        }
+        if ( level == 3)
+        {
+            this.tag = "Wave3";
+        }
+
+    }
     private void Move()
     {
       
@@ -50,6 +65,7 @@ public class Wave : MonoBehaviour
         transform.rotation = playerPos.rotation;
         shotPower=player.GetShotpower();    
         level = player.GetPowerLevel();
+        LevelCheck();
         player.ResetShotPower();
     }
 
