@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private int powerLevel;
     private int mode;
     private int modeMax;
+    private bool checkLB;
+    private bool checkRB;
 
     private void PlayerControll()
     {
@@ -157,19 +159,38 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("leftB") !=0)
         {
-            if (mode < modeMax)
+            if (checkLB == false)
             {
-                mode++;
+                if (mode < modeMax)
+                {
+                    mode++;
+                    checkLB = true;
+                }
             }
+           
             
+        }
+        if (Input.GetAxis("leftB") == 0)
+        {
+            checkLB=false;
         }
 
         if (Input.GetAxis("rightB") != 0)
         {
-            if (mode > 0)
+            if (checkRB == false)
             {
-                mode--;
+                if (mode > 1)
+                {
+                    mode--;
+                    checkRB = true;
+                }
+
             }
+            
+        }
+        if (Input.GetAxis("rightB") == 0)
+        {
+            checkRB=false;
         }
 
     }
@@ -204,6 +225,7 @@ public class Player : MonoBehaviour
         cameraPos=GameObject.FindWithTag("MainCamera").GetComponent<Transform>();
 
         mode = 2;
+        modeMax = 3;
         
     }
 
