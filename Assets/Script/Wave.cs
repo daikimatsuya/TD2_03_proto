@@ -13,11 +13,13 @@ public class Wave : MonoBehaviour
 
     private float shotPower;
     public float vector;
+    public float sizeCut;
     private int level;
+    private int mode;
 
     private void WaveAction()
     {
-       
+        SizeUp();
         Move();
         DestroyCount();
     }
@@ -45,6 +47,22 @@ public class Wave : MonoBehaviour
         }
 
     }
+    private void SizeUp()
+    {
+        if(mode == 1)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z + (mode - transform.localScale.x / 2) / (sizeCut+5));
+        }
+        if(mode == 2)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z + (mode - transform.localScale.x / 2) / sizeCut);
+        }
+        if(mode == 3)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z + (mode - transform.localScale.x / 2) / (sizeCut-5));
+        }
+        
+    }
     private void Move()
     {
       
@@ -65,6 +83,7 @@ public class Wave : MonoBehaviour
         transform.rotation = playerPos.rotation;
         shotPower=player.GetShotpower();    
         level = player.GetPowerLevel();
+        mode=player.GetMode();
         LevelCheck();
         player.ResetShotPower();
     }

@@ -206,6 +206,10 @@ public class Player : MonoBehaviour
     {
         return powerLevel;
     }
+    public int GetMode()
+    {
+        return mode;
+    }
     public void ResetShotPower()
     {
         shotPower = 0;
