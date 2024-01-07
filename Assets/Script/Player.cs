@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private float shotPower;
     private int powerLevel;
     private int mode;
+    private int modeMax;
 
     private void PlayerControll()
     {
@@ -156,12 +157,19 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("leftB") !=0)
         {
-            mode++;
+            if (mode < modeMax)
+            {
+                mode++;
+            }
+            
         }
 
         if (Input.GetAxis("rightB") != 0)
         {
-            mode--;
+            if (mode > 0)
+            {
+                mode--;
+            }
         }
 
     }
