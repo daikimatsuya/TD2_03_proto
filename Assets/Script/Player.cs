@@ -154,10 +154,11 @@ public class Player : MonoBehaviour
     }
     private void SelectMode()
     {
-        if (Input.GetAxis("leftB")!=0)
+        if (Input.GetAxis("leftB") !=0)
         {
             mode++;
         }
+
         if (Input.GetAxis("rightB") != 0)
         {
             mode--;

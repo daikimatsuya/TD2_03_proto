@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Circle
   - Manager
+  - Wave2
+  - Wave3
   layers:
   - Default
   - TransparentFX
