@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float cameraRotate;
     private float shotPower;
     private int powerLevel;
-    private int mode;
+    public int mode;
     private int modeMax;
     private bool checkLB;
     private bool checkRB;

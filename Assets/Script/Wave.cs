@@ -59,7 +59,7 @@ public class Wave : MonoBehaviour
         }
         if(mode == 3)
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z + (mode - transform.localScale.x / 2) / (sizeCut-5));
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z + (mode - transform.localScale.x / 2) / (sizeCut-3));
         }
         
     }
@@ -84,6 +84,7 @@ public class Wave : MonoBehaviour
         shotPower=player.GetShotpower();    
         level = player.GetPowerLevel();
         mode=player.GetMode();
+        shotPower /= mode;
         LevelCheck();
         player.ResetShotPower();
     }

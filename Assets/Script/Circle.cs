@@ -9,7 +9,9 @@ public class Circle : MonoBehaviour
     private Vector2 circleSize;
 
     public float circleSizeupSpeed;
+    public float circleSizedownSpeed;
     public Vector2 standardCircle;
+    public float stint;
 
 
     private void CircleControll()
@@ -18,6 +20,7 @@ public class Circle : MonoBehaviour
     }
     private void CircleSizeControll()
     {
+        SizeDown();
         if (Input.GetKey(KeyCode.UpArrow))
         {
             circleSize = new Vector2(circleSize.x + circleSizeupSpeed, circleSize.y + circleSizeupSpeed);
@@ -35,7 +38,22 @@ public class Circle : MonoBehaviour
     }
     public void CircleSizeUp(Vector2 size)
     {
-        circleSize = new Vector2(circleSize.x + size.x, circleSize.y + size.y);
+        if (size.x > 2)
+        {
+            size.x = 2;
+        }
+        if (size.y>2)
+        {
+            size.y = 2;
+        }
+        circleSize = new Vector2(circleSize.x + size.x/(circleSize.x/stint), circleSize.y + size.y/(circleSize.y/stint));
+    }
+    private void SizeDown()
+    {
+        if(circleSize.x > standardCircle.x)
+        {
+            circleSize = new Vector2(circleSize.x - circleSizedownSpeed, circleSize.y - circleSizedownSpeed);
+        }
     }
     // Start is called before the first frame update
     void Start()
