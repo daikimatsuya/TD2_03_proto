@@ -1093,6 +1093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6000708353347362974, guid: 1022a35ed4bea6047b1838e35e460d8e, type: 3}
+  test: {fileID: 6000708353347362974, guid: 1022a35ed4bea6047b1838e35e460d8e, type: 3}
+  magnification: 5
   sumonCount: 0.01
   enemyQuantity: 3
 --- !u!4 &1532662401
@@ -1439,7 +1441,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832517869}
-  m_LocalRotation: {x: -0.018141508, y: 0.000000046497885, z: -0.00000002455684, w: 0.9998355}
+  m_LocalRotation: {x: -0.018141508, y: 0.00000004649481, z: -0.000000024555218, w: 0.9998355}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

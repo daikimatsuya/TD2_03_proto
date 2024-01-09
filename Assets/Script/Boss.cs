@@ -8,12 +8,16 @@ public class Boss : MonoBehaviour
 {
     private Transform circle;
     public GameObject enemy;
+    public GameObject test;
+
+    public float magnification;
 
     private bool isSumon;
     public  float sumonCount;
     private int sumonCountBuff;
     private Vector2[] sumonPos;
     public int enemyQuantity;
+    private Vector2 tester;
 
     private void BossAction()
     {
@@ -28,24 +32,26 @@ public class Boss : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) 
         {
             isSumon = true;
-            //for (int i = enemyQuantity; i >= 0;)
-            //{
-            //    sumonPos[i] = new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
-            //    i--;
-            //}
-            sumonPos[0] = new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
+            for (int i = 0; i < enemyQuantity;)
+            {
+                sumonPos[i] = new Vector2(UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x), UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x));
+                i++;
+            }
+            //tester= new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
+            //sumonPos[0] = new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
+
         }
         if(isSumon)
         {
             sumonCountBuff--;
             if(sumonCountBuff < 0)
             {
-                //for (int i = enemyQuantity; i >= 0;)
-                //{
-                //    UnityEngine.Object instans = Instantiate(enemy, new Vector3(sumonPos[i].x, 0, sumonPos[i].y), new Quaternion(0, 0, 0, 1));
-                //    i--;
-                //}
-                UnityEngine.Object instans = Instantiate(enemy, new Vector3(sumonPos[0].x, 0, sumonPos[0].y), new Quaternion(0, 0, 0, 1));
+                for (int i = 0; i < enemyQuantity;)
+                {
+                    UnityEngine.Object instans = Instantiate(enemy, new Vector3(sumonPos[i].x*magnification, 0, sumonPos[i].y*magnification), Quaternion.identity);
+                    i++;
+                }
+
                 isSumon =false;
 
             }
@@ -54,8 +60,10 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sumonPos = new Vector2[enemyQuantity];
         circle = GameObject.FindWithTag("Circle").GetComponent<Transform>();
         sumonCountBuff = (int)(sumonCount * 60);
+
 
     }
 
@@ -63,5 +71,6 @@ public class Boss : MonoBehaviour
     void Update()
     {
         BossAction();
+        
     }
 }
