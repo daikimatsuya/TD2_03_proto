@@ -9,10 +9,12 @@ public class StrikeScript : MonoBehaviour
     Transform tf;
     Rigidbody rb;
     public float movePower;
+    public float hpTime;
     // Start is called before the first frame update
     private void StrikeAction()
     {
         Move();
+        CountDown();
     }
     private void Move()
     {
@@ -27,10 +29,19 @@ public class StrikeScript : MonoBehaviour
     {
         return angle * (float)Math.PI / 180f;
     }
+    private void CountDown()
+    {
+        hpTime--;
+        if(hpTime < 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void Start()
     {
         tf=GetComponent<Transform>();
         rb=GetComponent<Rigidbody>();
+        hpTime *= 60;
     }
 
     // Update is called once per frame

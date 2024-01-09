@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
 
     private bool isSumon;
     private bool isStrike;
+    private float strikeDeg;
     public  float sumonCount;
     private int sumonCountBuff;
     private Vector2[] sumonPos;
@@ -67,12 +68,13 @@ public class Boss : MonoBehaviour
         }
         if(isStrike)
         {
-            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0));
-            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0));
-            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 270, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, strikeDeg + 0, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, strikeDeg + 90, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, strikeDeg + 180, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, strikeDeg + 270, 0));
             isStrike = false;
         }
+        strikeDeg++;
     }
     private float ToRadian(float angle)
     {
@@ -84,7 +86,7 @@ public class Boss : MonoBehaviour
         sumonPos = new Vector2[enemyQuantity];
         circle = GameObject.FindWithTag("Circle").GetComponent<Transform>();
         sumonCountBuff = (int)(sumonCount * 60);
-
+        strikeDeg = 0;
 
     }
 

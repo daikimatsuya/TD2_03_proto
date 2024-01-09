@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePower: 8
+  hpTime: 5
 --- !u!54 &-1019839716754371817
 Rigidbody:
   m_ObjectHideFlags: 0
