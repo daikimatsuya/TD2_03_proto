@@ -76,6 +76,7 @@ public class Boss : MonoBehaviour
         }
         strikeDeg++;
     }
+
     private float ToRadian(float angle)
     {
         return angle * (float)Math.PI / 180f;
