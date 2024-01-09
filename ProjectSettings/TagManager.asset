@@ -11,6 +11,8 @@ TagManager:
   - Manager
   - Wave2
   - Wave3
+  - Boss
+  - strike
   layers:
   - Default
   - TransparentFX

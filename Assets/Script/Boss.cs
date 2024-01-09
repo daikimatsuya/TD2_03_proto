@@ -8,11 +8,12 @@ public class Boss : MonoBehaviour
 {
     private Transform circle;
     public GameObject enemy;
-    public GameObject test;
+    public GameObject strikeBlock;
 
     public float magnification;
 
     private bool isSumon;
+    private bool isStrike;
     public  float sumonCount;
     private int sumonCountBuff;
     private Vector2[] sumonPos;
@@ -26,6 +27,7 @@ public class Boss : MonoBehaviour
     private void Attack()
     {
         SumonEnemy();
+        Strike();
     }
     private void SumonEnemy()
     {
@@ -56,6 +58,25 @@ public class Boss : MonoBehaviour
 
             }
         }
+    }
+    private void Strike()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            isStrike = true;
+        }
+        if(isStrike)
+        {
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 90, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 180, 0));
+            _ = Instantiate(strikeBlock, new Vector3(0, 0, 0), Quaternion.Euler(0, 270, 0));
+            isStrike = false;
+        }
+    }
+    private float ToRadian(float angle)
+    {
+        return angle * (float)Math.PI / 180f;
     }
     // Start is called before the first frame update
     void Start()
