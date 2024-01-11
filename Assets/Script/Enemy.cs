@@ -23,12 +23,13 @@ public class Enemy : MonoBehaviour
     {
         if (this.tag == "Stan")
         {
-            if(rb.velocity.x < 1)
+            if(rb.velocity.x == 0f)
             {
-                if(rb.velocity.z < 1)
+                if(rb.velocity.z == 0f)
                 {
-                    this.tag = "Enemy";
-                    isStan = false;
+                    Destroy(this.gameObject);
+                    //this.tag = "Enemy";
+                    //isStan = false;
                 }
             }
         }
@@ -45,6 +46,10 @@ public class Enemy : MonoBehaviour
         Vector2 pos = new Vector2(player.position.x - tf.position.x, player.position.z - tf.position.z);
          pos.Normalize();
         return pos;
+    }
+    private void PlusSpeed(Vector3 speed)
+    {
+        rb.velocity = new Vector3(rb.velocity.x + speed.x, rb.velocity.y, rb.velocity.z + speed.z);
     }
     private void Attack()
     {
@@ -82,7 +87,13 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Circle")
         {
 
-            gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/2, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/2));
+            gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8));
+        }
+        if(collision.gameObject.tag == "Stan")
+        {
+            Rigidbody rigidbody;
+            rigidbody=collision.gameObject.GetComponent<Rigidbody>();
+            PlusSpeed(rigidbody.velocity);
         }
     }
 
