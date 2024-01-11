@@ -119,8 +119,20 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("leftTrigger") != 0)
         {
+            if (isCanAttack == false)
+            {
+                shotPower += 100;
+                if (shotPower < 60)
+                {
+                    powerLevel = 3;
+                }
+                CreateWave();
+                SelectMode();
+            }
             isCanAttack = true;
-            shotPower+=1;
+           
+            
+            
         }
         if(Input.GetAxis("leftTrigger")==0)
         {
