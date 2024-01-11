@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Boss boss;
     GameManagerScript gameManagerScript;
     Rigidbody rb;
     Transform tf;
@@ -13,6 +14,8 @@ public class Enemy : MonoBehaviour
     private bool isStan;
     public float coolTime;
     private float coolTimeBuff;
+    private int power;
+    public float damage;
 
     private void EnemyAction()
     {
@@ -86,7 +89,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Circle")
         {
-
+            power++;
             gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8));
         }
         if(collision.gameObject.tag == "Stan")
@@ -95,6 +98,11 @@ public class Enemy : MonoBehaviour
             rigidbody=collision.gameObject.GetComponent<Rigidbody>();
             PlusSpeed(rigidbody.velocity);
         }
+        if (collision.gameObject.tag == "Boss")
+        {
+            boss.Damage((damage * power));
+            Destroy(this.gameObject);
+        }
     }
 
     // Start is called before the first frame update
@@ -102,6 +110,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         tf=GetComponent<Transform>();   
+        boss = GameObject.FindWithTag("Boss").GetComponent<Boss>();
         gameManagerScript = GameObject.FindWithTag("Manager").GetComponent<GameManagerScript>();
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
 

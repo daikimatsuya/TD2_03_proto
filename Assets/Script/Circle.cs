@@ -20,6 +20,7 @@ public class Circle : MonoBehaviour
     }
     private void CircleSizeControll()
     {
+        FixedPos();
         SizeDown();
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -30,6 +31,10 @@ public class Circle : MonoBehaviour
             circleSize = new Vector2(circleSize.x - circleSizeupSpeed, circleSize.y - circleSizeupSpeed);
         }
         CircleScale(circleSize);
+    }
+    private void FixedPos()
+    {
+        transform.position = new Vector3(0, 0, 0);
     }
 
     private void CircleScale(Vector2 scale)

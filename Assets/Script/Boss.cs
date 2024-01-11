@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
     private Vector2[] sumonPos;
     public int enemyQuantity;
     private Vector2 tester;
+    private float hp;
 
     private void BossAction()
     {
@@ -77,6 +78,10 @@ public class Boss : MonoBehaviour
         strikeDeg++;
     }
 
+    public void Damage(float damage)
+    {
+        hp -= damage;
+    }
     private float ToRadian(float angle)
     {
         return angle * (float)Math.PI / 180f;
