@@ -39,17 +39,9 @@ public class Enemy : MonoBehaviour
     }
     private void LookPlayer()
     {
-        if (!isStan)
-        {
-            tf.rotation = new Quaternion(0, ToPlayer().y*2, 0, 1);
-        }
+        tf.LookAt(player);
     }
-    private Vector2 ToPlayer()
-    {
-        Vector2 pos = new Vector2(player.position.x - tf.position.x, player.position.z - tf.position.z);
-         pos.Normalize();
-        return pos;
-    }
+
     private void PlusSpeed(Vector3 speed)
     {
         rb.velocity = new Vector3(rb.velocity.x + speed.x, rb.velocity.y, rb.velocity.z + speed.z);
