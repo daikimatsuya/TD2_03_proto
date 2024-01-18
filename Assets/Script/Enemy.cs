@@ -114,16 +114,28 @@ public class Enemy : MonoBehaviour
       
         if(collision.gameObject.tag == "Wall")
         {
-            Transform walltf = collision.gameObject.GetComponent<Transform>();
-            rb.velocity = new Vector3(bouncePower * (float)Math.Sin(ToRadian(walltf.eulerAngles.y)), 0, bouncePower * (float)Math.Cos(ToRadian(walltf.eulerAngles.y)));
-            power = 2;
+            if (this.tag == "Stan")
+            {
+                Transform walltf = collision.gameObject.GetComponent<Transform>();
+                rb.velocity = new Vector3(bouncePower * (float)Math.Sin(ToRadian(walltf.eulerAngles.y)), 0, bouncePower * (float)Math.Cos(ToRadian(walltf.eulerAngles.y)));
+                power = 2;
+            }
+   
         }
         if(collision.gameObject.tag == "Stan")
         {
-            Rigidbody rigidbody;
-            rigidbody=collision.gameObject.GetComponent<Rigidbody>();
-            PlusSpeed(rigidbody.velocity);
-            this.tag = "Stan";
+            if (canShoot)
+            {
+                Rigidbody rigidbody;
+                rigidbody = collision.gameObject.GetComponent<Rigidbody>();
+                PlusSpeed(rigidbody.velocity);
+                this.tag = "Stan";
+            }
+            else
+            {
+                Explode();
+            }
+       
         }
         if (collision.gameObject.tag == "Boss")
         {
@@ -147,7 +159,7 @@ public class Enemy : MonoBehaviour
         coolTimeBuff = coolTime * 60;
         stanTime *= 60;
         isLook = true;
-        if (boss.PopCount() < 2)
+        if (boss.PopCount() < boss.GetEnemyCount() - 1) 
         {
             boss.PopUp();
             canShoot = false;

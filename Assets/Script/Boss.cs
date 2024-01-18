@@ -47,6 +47,7 @@ public class Boss : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E)) 
         {
+            sumonPos = new Vector2[enemyQuantity];
             isSumon = true;
            enemyPop = 0;
             for (int i = 0; i < enemyQuantity;)
@@ -57,9 +58,6 @@ public class Boss : MonoBehaviour
 
                 i++;
             }
-            //tester= new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
-            //sumonPos[0] = new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
-
         }
         if(isSumon)
         {
@@ -68,7 +66,7 @@ public class Boss : MonoBehaviour
             {
                 for (int i = 0; i < enemyQuantity;)
                 {
-                    UnityEngine.Object instans = Instantiate(enemy, new Vector3(sumonPos[i].x*magnification, 0, sumonPos[i].y*magnification), Quaternion.identity);
+                    _ = Instantiate(enemy, new Vector3(sumonPos[i].x*magnification, 0, sumonPos[i].y*magnification), Quaternion.identity);
                     i++;
                 }
 
@@ -109,6 +107,10 @@ public class Boss : MonoBehaviour
     public void PopUp() 
     {
         enemyPop++;
+    }
+    public int GetEnemyCount()
+    {
+        return enemyQuantity;
     }
     // Start is called before the first frame update
     void Start()
