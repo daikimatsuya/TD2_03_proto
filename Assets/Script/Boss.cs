@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    Transform tf;
+    private Transform player;
     private Transform circle;
     public GameObject enemy;
     public GameObject strikeBlock;
@@ -25,11 +27,16 @@ public class Boss : MonoBehaviour
     private void BossAction()
     {
         Attack();
+        LookPlayer();
     }
     private void Attack()
     {
         SumonEnemy();
         Strike();
+    }
+    private void LookPlayer()
+    {
+        tf.LookAt(player);
     }
     private void SumonEnemy()
     {
@@ -93,6 +100,8 @@ public class Boss : MonoBehaviour
     {
         sumonPos = new Vector2[enemyQuantity];
         circle = GameObject.FindWithTag("Circle").GetComponent<Transform>();
+        tf=GetComponent<Transform>();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         sumonCountBuff = (int)(sumonCount * 60);
         strikeDeg = 0;
 

@@ -130,3 +130,4 @@ MonoBehaviour:
   coolTime: 0
   damage: 1
   bouncePower: 30
+  stanTime: 300000

@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private int power;
     public float damage;
     public float bouncePower;
+    public float stanTime;
 
     private void EnemyAction()
     {
@@ -27,14 +28,10 @@ public class Enemy : MonoBehaviour
     {
         if (this.tag == "Stan")
         {
-            if(rb.velocity.x == 0f)
+            stanTime--;
+            if(stanTime < 0)
             {
-                if(rb.velocity.z == 0f)
-                {
-                    //Destroy(this.gameObject);
-                    //this.tag = "Enemy";
-                    //isStan = false;
-                }
+                Explode();
             }
         }
     }
@@ -53,6 +50,10 @@ public class Enemy : MonoBehaviour
         {
 
         }
+    }
+    private void Explode()
+    {
+        Destroy(this.gameObject);
     }
 
 
@@ -89,13 +90,14 @@ public class Enemy : MonoBehaviour
         {
             Transform walltf = collision.gameObject.GetComponent<Transform>();
             rb.velocity = new Vector3(bouncePower * (float)Math.Sin(ToRadian(walltf.eulerAngles.y)), 0, bouncePower * (float)Math.Cos(ToRadian(walltf.eulerAngles.y)));
-            power++;
+            power = 2;
         }
         if(collision.gameObject.tag == "Stan")
         {
             Rigidbody rigidbody;
             rigidbody=collision.gameObject.GetComponent<Rigidbody>();
             PlusSpeed(rigidbody.velocity);
+            this.tag = "Stan";
         }
         if (collision.gameObject.tag == "Boss")
         {
@@ -117,6 +119,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
         coolTimeBuff = coolTime * 60;
+        stanTime *= 60;
     }
 
     // Update is called once per frame
