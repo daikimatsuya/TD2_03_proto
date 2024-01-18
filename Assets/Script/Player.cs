@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
             shotPower = 50;
             powerLevel = 3;
             CreateWave();
-            
+            SelectMode();
         }
         if (Input.GetAxis("leftTrigger")==0)
         {
