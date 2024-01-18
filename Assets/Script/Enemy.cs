@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float bouncePower;
     public float stanTime;
+    private bool isLook;
 
     private void EnemyAction()
     {
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
     {
         if (this.tag == "Stan")
         {
+            isLook = false;
             stanTime--;
             if(stanTime < 0)
             {
@@ -37,7 +39,10 @@ public class Enemy : MonoBehaviour
     }
     private void LookPlayer()
     {
-        tf.LookAt(player);
+        if(isLook)
+        {
+            tf.LookAt(player);
+        }        
     }
 
     private void PlusSpeed(Vector3 speed)
@@ -120,6 +125,7 @@ public class Enemy : MonoBehaviour
 
         coolTimeBuff = coolTime * 60;
         stanTime *= 60;
+        isLook = true;
     }
 
     // Update is called once per frame

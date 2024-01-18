@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
 
     public float magnification;
 
+    private bool isLook;
     private bool isSumon;
     private bool isStrike;
     private float strikeDeg;
@@ -36,7 +37,10 @@ public class Boss : MonoBehaviour
     }
     private void LookPlayer()
     {
-        tf.LookAt(player);
+        if(isLook)
+        {
+            tf.LookAt(player);
+        }        
     }
     private void SumonEnemy()
     {
@@ -104,6 +108,7 @@ public class Boss : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         sumonCountBuff = (int)(sumonCount * 60);
         strikeDeg = 0;
+        isLook = true;
 
     }
 

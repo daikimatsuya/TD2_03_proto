@@ -84,8 +84,8 @@ public class Wave : MonoBehaviour
         shotPower=player.GetShotpower();    
         level = player.GetPowerLevel();
         mode=player.GetMode();
-        shotPower /= mode;
-        LevelCheck();
+        
+       // LevelCheck();
         player.ResetShotPower();
     }
 
