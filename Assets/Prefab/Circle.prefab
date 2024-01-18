@@ -4476,7 +4476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleSizeupSpeed: 0.1
-  circleSizedownSpeed: 0.001
+  circleSizedownSpeed: 0.002
   standardCircle: {x: 2, y: 2}
   stint: 2
 --- !u!54 &5713378380853364529

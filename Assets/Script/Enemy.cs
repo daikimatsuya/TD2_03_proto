@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     private float coolTimeBuff;
     private int power;
     public float damage;
+    public float bouncePower;
 
     private void EnemyAction()
     {
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour
             {
                 if(rb.velocity.z == 0f)
                 {
-                    Destroy(this.gameObject);
+                    //Destroy(this.gameObject);
                     //this.tag = "Enemy";
                     //isStan = false;
                 }
@@ -79,10 +80,16 @@ public class Enemy : MonoBehaviour
     }
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Circle")
+        //if (collision.gameObject.tag == "Circle")
+        //{
+        //    power++;
+        //    // gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8));
+        //}
+        if(collision.gameObject.tag == "Wall")
         {
+            Transform walltf = collision.gameObject.GetComponent<Transform>();
+            rb.velocity = new Vector3(bouncePower * (float)Math.Sin(ToRadian(walltf.eulerAngles.y)), 0, bouncePower * (float)Math.Cos(ToRadian(walltf.eulerAngles.y)));
             power++;
-            gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8));
         }
         if(collision.gameObject.tag == "Stan")
         {
@@ -93,10 +100,13 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Boss")
         {
             boss.Damage((damage * power));
-            Destroy(this.gameObject);
+          
         }
     }
-
+    private float ToRadian(float angle)
+    {
+        return angle * (float)Math.PI / 180f;
+    }
     // Start is called before the first frame update
     void Start()
     {

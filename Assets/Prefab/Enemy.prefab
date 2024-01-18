@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolTime: 0
   damage: 1
+  bouncePower: 30

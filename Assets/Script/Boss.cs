@@ -38,7 +38,9 @@ public class Boss : MonoBehaviour
             isSumon = true;
             for (int i = 0; i < enemyQuantity;)
             {
+#pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^Ž®‚Å‚·
                 sumonPos[i] = new Vector2(UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x), UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x));
+#pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^Ž®‚Å‚·
                 i++;
             }
             //tester= new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));

@@ -14,6 +14,7 @@ public class Circle : MonoBehaviour
     public float stint;
 
 
+
     private void CircleControll()
     {
         CircleSizeControll();
@@ -51,7 +52,7 @@ public class Circle : MonoBehaviour
         {
             size.y = 2;
         }
-        circleSize = new Vector2(circleSize.x + (size.x/9)/(circleSize.x/stint), circleSize.y + (size.y/9)/(circleSize.y/stint));
+       // circleSize = new Vector2(circleSize.x + (size.x/9)/(circleSize.x/stint), circleSize.y + (size.y/9)/(circleSize.y/stint));
     }
     private void SizeDown()
     {
