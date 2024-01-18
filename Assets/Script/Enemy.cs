@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     Rigidbody rb;
     Transform tf;
     private Transform player;
+    public GameObject explode;
 
     private bool isStan;
     public float coolTime;
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
     }
     private void Explode()
     {
+        _ = Instantiate(explode, new Vector3(tf.position.x, tf.position.y, tf.position.z), Quaternion.identity);
         Destroy(this.gameObject);
     }
 
@@ -86,11 +88,7 @@ public class Enemy : MonoBehaviour
     }
     public void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.tag == "Circle")
-        //{
-        //    power++;
-        //    // gameManagerScript.CircleSizeUp(new Vector2((float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8, (float)Math.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z)/8));
-        //}
+      
         if(collision.gameObject.tag == "Wall")
         {
             Transform walltf = collision.gameObject.GetComponent<Transform>();
