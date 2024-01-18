@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float bouncePower;
     public float stanTime;
     private bool isLook;
+    private bool canShoot;
 
     private void EnemyAction()
     {
@@ -68,21 +69,43 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Wave")
         {
-            rb.velocity= new Vector3( other.GetComponent<Rigidbody>().velocity.x/2, 0, other.GetComponent<Rigidbody>().velocity.z/2);
-            this.tag = "Stan";
-            isStan=true;
+            if(canShoot)
+            {
+                rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 2, 0, other.GetComponent<Rigidbody>().velocity.z / 2);
+                this.tag = "Stan";
+                isStan = true;
+            }
+            else
+            {
+                Explode();
+            }
         }
         if(other.tag == "Wave2")
         {
-            rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 1.75f, 0, other.GetComponent<Rigidbody>().velocity.z / 1.75f);
-            this.tag = "Stan";
-            isStan=true;
+            if (canShoot)
+            {
+                rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 2, 0, other.GetComponent<Rigidbody>().velocity.z / 2);
+                this.tag = "Stan";
+                isStan = true;
+            }
+            else
+            {
+                Explode();
+            }
+
         }
         if (other.tag == "Wave3")
         {
-            rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 1.5f, 0, other.GetComponent<Rigidbody>().velocity.z / 1.5f);
-            this.tag = "Stan";
-            isStan=true;
+            if (canShoot)
+            {
+                rb.velocity = new Vector3(other.GetComponent<Rigidbody>().velocity.x / 2, 0, other.GetComponent<Rigidbody>().velocity.z / 2);
+                this.tag = "Stan";
+                isStan = true;
+            }
+            else
+            {
+                Explode();
+            }
         }
      
     }
@@ -124,6 +147,16 @@ public class Enemy : MonoBehaviour
         coolTimeBuff = coolTime * 60;
         stanTime *= 60;
         isLook = true;
+        if (boss.PopCount() < 2)
+        {
+            boss.PopUp();
+            canShoot = false;
+        }
+        else
+        {
+            canShoot= true;
+        }
+            
     }
 
     // Update is called once per frame

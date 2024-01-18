@@ -5,9 +5,11 @@ using UnityEngine;
 public class Explode : MonoBehaviour
 {
     Transform tf;
+    Boss boss;
 
     private Vector3 pos;
     public float limit;
+    public float damage;
     private void Explosion()
     {
         tf.position = pos;
@@ -19,9 +21,17 @@ public class Explode : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Boss")
+        {
+            boss.Damage(damage);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        boss=GameObject.FindWithTag("Boss").GetComponent<Boss>();
         tf= GetComponent<Transform>();  
         pos = tf.position;
         limit *= 60;

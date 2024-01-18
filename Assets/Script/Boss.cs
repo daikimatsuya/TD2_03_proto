@@ -23,7 +23,8 @@ public class Boss : MonoBehaviour
     private Vector2[] sumonPos;
     public int enemyQuantity;
     private Vector2 tester;
-    private float hp;
+    public float hp;
+    private int enemyPop;
 
     private void BossAction()
     {
@@ -47,11 +48,13 @@ public class Boss : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)) 
         {
             isSumon = true;
+           enemyPop = 0;
             for (int i = 0; i < enemyQuantity;)
             {
 #pragma warning disable CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^Ž®‚Å‚·
                 sumonPos[i] = new Vector2(UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x), UnityEngine.Random.RandomRange(-circle.localScale.x, circle.localScale.x));
 #pragma warning restore CS0618 // Œ^‚Ü‚½‚Íƒƒ“ƒo[‚ª‹ŒŒ^Ž®‚Å‚·
+
                 i++;
             }
             //tester= new Vector2(UnityEngine.Random.RandomRange(0, circle.localScale.x), UnityEngine.Random.RandomRange(0, circle.localScale.x));
@@ -98,6 +101,14 @@ public class Boss : MonoBehaviour
     private float ToRadian(float angle)
     {
         return angle * (float)Math.PI / 180f;
+    }
+    public int PopCount()
+    {
+        return enemyPop;
+    }
+    public void PopUp() 
+    {
+        enemyPop++;
     }
     // Start is called before the first frame update
     void Start()
